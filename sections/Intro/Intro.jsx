@@ -2,34 +2,48 @@ import PropTypes from 'prop-types'
 import cs from 'classnames'
 import { Carousel } from 'react-responsive-carousel'
 
+import { title, background, description } from '../../public'
+import { useWindowSize } from '../../utils'
 import utilsStyles from '../../styles/utils.module.css'
 
 import styles from './Intro.module.css'
 
-const Intro = ({ theme }) => (
-  <section className={cs(utilsStyles.section, styles.container, theme)}>
-    <Carousel
-      infiniteLoop
-      dynamicHeight={false}
-      showThumbs={false}
-      showArrows={false}
-      showIndicators={false}
-      showStatus={false}
-      stopOnHover={false}
-      emulateTouch
-      swipeable
-      useKeyboardArrows
-      transitionTime={700}
-      swipeScrollTolerance={5}
-      interval={6000}
-      centerSlidePercentage={50}
-    >
-      <div className={styles.imageContainer}>
-        <img src="/images/Background.jpg" alt="title" className={styles.img}/>
-      </div>
-    </Carousel>
-  </section>
-)
+const Intro = ({ theme }) => {
+  const [windowWidth] = useWindowSize()
+
+  return (
+    <section className={cs(utilsStyles.section, styles.container, theme)}>
+      <Carousel
+        autoPlay
+        infiniteLoop
+        centerMode={windowWidth > 700}
+        dynamicHeight={false}
+        showThumbs={false}
+        showArrows={false}
+        showIndicators={false}
+        showStatus={false}
+        stopOnHover={false}
+        emulateTouch
+        swipeable
+        useKeyboardArrows
+        transitionTime={700}
+        swipeScrollTolerance={5}
+        interval={8000}
+        centerSlidePercentage={50}
+      >
+        <div className={styles.imageContainer}>
+          <img src={title} alt="title" className={styles.img}/>
+        </div>
+        <div className={styles.imageContainer}>
+          <img src={background} alt="background" className={styles.img}/>
+        </div>
+        <div className={styles.imageContainer}>
+          <img src={description} alt="description" className={styles.img}/>
+        </div>
+      </Carousel>
+    </section>
+  )
+}
 
 Intro.propTypes = {
   theme: PropTypes.string

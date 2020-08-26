@@ -1,5 +1,4 @@
 .container {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +8,9 @@
     position: absolute;
     padding: 40px;
     z-index: 99999;
+}
+
+.carousel {
 }
 
 .imageContainer {
