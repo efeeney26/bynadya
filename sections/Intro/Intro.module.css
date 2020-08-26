@@ -10,3 +10,14 @@
     padding: 40px;
     z-index: 99999;
 }
+
+.imageContainer {
+    width: auto;
+    height: 100vh;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
