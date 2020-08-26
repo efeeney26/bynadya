@@ -1,5 +1,8 @@
 import Head from 'next/head'
-import { Intro, About } from '../sections'
+import { Element } from 'react-scroll'
+
+import utilsStyles from '../styles/utils.module.css'
+import { Header, Intro, About, Cases } from '../sections'
 
 export default function Home () {
   return (
@@ -7,8 +10,14 @@ export default function Home () {
       <Head>
         <title>ByNadya</title>
       </Head>
-      <Intro />
-      <About />
+      <Header theme={utilsStyles.header} />
+      <Intro theme={utilsStyles.intro} />
+      <Element name="about">
+        <About />
+      </Element>
+      <Element name="cases">
+        <Cases />
+      </Element>
     </>
   )
 }

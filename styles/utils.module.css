@@ -1,0 +1,14 @@
+.section {
+    min-height: 100vh;
+}
+
+.header {
+    position: absolute;
+    padding: 40px;
+    z-index: 99999;
+    width: 100vw;
+}
+
+.intro {
+    position: relative;
+}
