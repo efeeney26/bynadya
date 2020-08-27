@@ -1,4 +1,4 @@
-import utilsStyles from '../../styles/utils.module.css'
+import utilsStyles from '../../../styles/utils.module.css'
 
 import styles from './Cases.module.css'
 

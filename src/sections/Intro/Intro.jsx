@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import cs from 'classnames'
 import { Carousel } from 'react-responsive-carousel'
 
-import { title, background, description } from '../../public'
+import { title, background, description } from '../../../public'
 import { useWindowSize } from '../../utils'
-import utilsStyles from '../../styles/utils.module.css'
+import utilsStyles from '../../../styles/utils.module.css'
 
 import styles from './Intro.module.css'
 

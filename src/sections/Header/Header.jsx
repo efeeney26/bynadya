@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-scroll'
 import cs from 'classnames'
 
-import { HEADER_NAVIGATION_TITLES } from '../../constants'
+import { HEADER_NAVIGATION_TITLES } from '../../../constants'
 
 import styles from './Header.module.css'
 

@@ -1,8 +1,8 @@
 import cs from 'classnames'
 
-import { main } from '../../public'
+import { main } from '../../../public'
 
-import utilsStyles from '../../styles/utils.module.css'
+import utilsStyles from '../../../styles/utils.module.css'
 
 import styles from './About.module.css'
 
