@@ -13,34 +13,35 @@ const Intro = ({ theme }) => {
 
   return (
     <section className={cs(utilsStyles.section, styles.container, theme)}>
-      <Carousel
-        autoPlay
-        infiniteLoop
-        centerMode={windowWidth > 700}
-        dynamicHeight={false}
-        showThumbs={false}
-        showArrows={false}
-        showIndicators={false}
-        showStatus={false}
-        stopOnHover={false}
-        emulateTouch
-        swipeable
-        useKeyboardArrows
-        transitionTime={700}
-        swipeScrollTolerance={5}
-        interval={8000}
-        centerSlidePercentage={50}
-      >
-        <div className={styles.imageContainer}>
-          <img src={title} alt="title" className={styles.img}/>
-        </div>
-        <div className={styles.imageContainer}>
-          <img src={background} alt="background" className={styles.img}/>
-        </div>
-        <div className={styles.imageContainer}>
-          <img src={description} alt="description" className={styles.img}/>
-        </div>
-      </Carousel>
+      {windowWidth < 700
+        ? <Carousel
+          autoPlay
+          infiniteLoop
+          dynamicHeight={false}
+          showThumbs={false}
+          showArrows={false}
+          showIndicators={false}
+          showStatus={false}
+          stopOnHover={false}
+          emulateTouch
+          swipeable
+          useKeyboardArrows
+          transitionTime={700}
+          swipeScrollTolerance={5}
+          interval={8000}
+        >
+          <div className={styles.imageContainer}>
+            <img src={title} alt="title" className={styles.img}/>
+          </div>
+          <div className={styles.imageContainer}>
+            <img src={background} alt="background" className={styles.img}/>
+          </div>
+          <div className={styles.imageContainer}>
+            <img src={description} alt="description" className={styles.img}/>
+          </div>
+        </Carousel>
+        : <div>Intro desktop</div>
+      }
     </section>
   )
 }
