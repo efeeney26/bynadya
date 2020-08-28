@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import { Container, Box } from '@material-ui/core'
 import { Carousel } from 'react-responsive-carousel'
 
 import { title, background, description } from '../../../public'
 import { useWindowSize } from '../../utils'
-import utilsStyles from '../../../styles/utils.module.css'
 
 import styles from './Intro.module.css'
 
@@ -12,9 +11,12 @@ const Intro = ({ theme }) => {
   const [windowWidth] = useWindowSize()
 
   return (
-    <section className={cs(utilsStyles.section, styles.container, theme)}>
-      {windowWidth < 700
-        ? <Carousel
+    <Container
+      maxWidth={false}
+      disableGutters
+    >
+      <Box>
+        <Carousel
           autoPlay
           infiniteLoop
           dynamicHeight={false}
@@ -30,19 +32,27 @@ const Intro = ({ theme }) => {
           swipeScrollTolerance={5}
           interval={8000}
         >
-          <div className={styles.imageContainer}>
+          <Box
+            width="auto"
+            height="100vh"
+          >
             <img src={title} alt="title" className={styles.img}/>
-          </div>
-          <div className={styles.imageContainer}>
+          </Box>
+          <Box
+            width="auto"
+            height="100vh"
+          >
             <img src={background} alt="background" className={styles.img}/>
-          </div>
-          <div className={styles.imageContainer}>
+          </Box>
+          <Box
+            width="auto"
+            height="100vh"
+          >
             <img src={description} alt="description" className={styles.img}/>
-          </div>
+          </Box>
         </Carousel>
-        : <div>Intro desktop</div>
-      }
-    </section>
+      </Box>
+    </Container>
   )
 }
 

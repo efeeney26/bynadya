@@ -1,30 +1,74 @@
+import { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-scroll'
-import cs from 'classnames'
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Menu as MenuIcon } from '@material-ui/icons'
 
-import { HEADER_NAVIGATION_TITLES } from '../../../constants'
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+}))
 
-import styles from './Header.module.css'
+const Header = () => {
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
 
-const Header = ({ theme }) => (
-  <header className={cs(styles.header, theme)}>
-    <p>ByNadya</p>
-    <Link
-      to={HEADER_NAVIGATION_TITLES.ABOUT}
-      smooth
-      duration={1000}
+  const handleClick = useCallback((event) => {
+    setAnchorEl(event.currentTarget)
+  }, [setAnchorEl])
+
+  const handleClose = useCallback(() => {
+    setAnchorEl(null)
+  }, [setAnchorEl])
+
+  return (
+    <AppBar
+      position="fixed"
+      color="transparent"
     >
-      <p>About</p>
-    </Link>
-    <Link
-      to={HEADER_NAVIGATION_TITLES.CASES}
-      smooth
-      duration={1000}
-    >
-      <p>Cases</p>
-    </Link>
-  </header>
-)
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+            ByNadya
+        </Typography>
+        <IconButton
+          edge="end"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleClick}
+          color="inherit"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>About</MenuItem>
+          <MenuItem onClick={handleClose}>Cases</MenuItem>
+        </Menu>
+      </Toolbar>
+    </AppBar>
+  )
+}
 
 Header.propTypes = {
   theme: PropTypes.string
