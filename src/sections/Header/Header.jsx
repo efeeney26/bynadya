@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <AppBar
-      position="fixed"
+      position="absolute"
       color="transparent"
     >
       <Toolbar>

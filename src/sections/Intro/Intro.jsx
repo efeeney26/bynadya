@@ -12,46 +12,42 @@ const Intro = ({ theme }) => {
 
   return (
     <Container
+      component="section"
       maxWidth={false}
       disableGutters
     >
-      <Box>
-        <Carousel
-          autoPlay
-          infiniteLoop
-          dynamicHeight={false}
-          showThumbs={false}
-          showArrows={false}
-          showIndicators={false}
-          showStatus={false}
-          stopOnHover={false}
-          emulateTouch
-          swipeable
-          useKeyboardArrows
-          transitionTime={700}
-          swipeScrollTolerance={5}
-          interval={8000}
+      <Carousel
+        autoPlay
+        infiniteLoop
+        dynamicHeight={false}
+        showThumbs={false}
+        showArrows={false}
+        showIndicators={false}
+        showStatus={false}
+        stopOnHover={false}
+        emulateTouch
+        swipeable
+        useKeyboardArrows
+        transitionTime={700}
+        swipeScrollTolerance={5}
+        interval={8000}
+      >
+        <Box
+          height="100vh"
         >
-          <Box
-            width="auto"
-            height="100vh"
-          >
-            <img src={title} alt="title" className={styles.img}/>
-          </Box>
-          <Box
-            width="auto"
-            height="100vh"
-          >
-            <img src={background} alt="background" className={styles.img}/>
-          </Box>
-          <Box
-            width="auto"
-            height="100vh"
-          >
-            <img src={description} alt="description" className={styles.img}/>
-          </Box>
-        </Carousel>
-      </Box>
+          <img src={title} alt="title" className={styles.img}/>
+        </Box>
+        <Box
+          height="100vh"
+        >
+          <img src={background} alt="background" className={styles.img}/>
+        </Box>
+        <Box
+          height="100vh"
+        >
+          <img src={description} alt="description" className={styles.img}/>
+        </Box>
+      </Carousel>
     </Container>
   )
 }
