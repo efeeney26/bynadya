@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
 
   const handleClick = useCallback((event) => {
     setAnchorEl(event.currentTarget)
@@ -51,16 +50,17 @@ const Header = () => {
           id="menu-appbar"
           anchorEl={anchorEl}
           anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
+            vertical: 'bottom',
+            horizontal: 'center'
           }}
           keepMounted
           transformOrigin={{
             vertical: 'top',
-            horizontal: 'right'
+            horizontal: 'center'
           }}
-          open={open}
+          open={Boolean(anchorEl)}
           onClose={handleClose}
+          getContentAnchorEl={null}
         >
           <MenuItem onClick={handleClose}>About</MenuItem>
           <MenuItem onClick={handleClose}>Cases</MenuItem>

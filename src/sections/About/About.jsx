@@ -1,13 +1,14 @@
-import { Container, Grid } from '@material-ui/core'
+import { Container, Grid, Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { main } from '../../../public'
 
 import styles from './About.module.css'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    height: '100vh'
+    height: '100vh',
+    flexGrow: 1
   }
 }))
 
@@ -25,12 +26,14 @@ const About = () => {
         className={classes.root}
         justify="space-around"
         alignItems="center"
-        alignContent="center"
+        alignContent="space-around"
       >
         <Grid
           item
+          xs={11}
+          sm={11}
+          md={5}
           lg={5}
-          xs={13}
         >
           <article>
             <h1>Hello</h1>
@@ -53,8 +56,10 @@ const About = () => {
         </Grid>
         <Grid
           item
-          lg={4}
           xs={8}
+          sm={7}
+          md={4}
+          lg={4}
         >
           <img src={main} alt="main" className={styles.image}/>
         </Grid>
