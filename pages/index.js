@@ -1,14 +1,17 @@
 import { Element } from 'react-scroll'
 
-import utilsStyles from '../styles/utils.module.css'
-import { Header, Intro, About, Cases } from '../src/sections'
+import { NavBar, Intro, About } from '../src/sections'
+import { ScrollToTopButton } from '../src/components'
 
 export default function Home () {
   return (
     <>
-      <Header />
+      <NavBar />
       <Intro />
-      <About />
+      <Element name="About">
+        <About />
+      </Element>
+      <ScrollToTopButton />
     </>
   )
 }

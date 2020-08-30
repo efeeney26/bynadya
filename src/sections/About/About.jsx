@@ -1,4 +1,4 @@
-import { Container, Grid, Box } from '@material-ui/core'
+import { Container, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { main } from '../../../public'
@@ -37,9 +37,9 @@ const About = () => {
         >
           <article>
             <h1>Hello</h1>
-            <p>
+            <div>
             Im Nadya.
-            </p>
+            </div>
             <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci autem culpa, doloremque facilis
             inventore ipsam iure labore magni, natus, neque numquam obcaecati omnis optio recusandae rem repellat
             repudiandae tempora?
@@ -47,16 +47,11 @@ const About = () => {
             <div>Autem commodi dolore dolores eligendi est harum impedit inventore laboriosam nostrum quae, quam sapiente
             similique veniam? Dolorum ex impedit ipsam magni molestiae nemo nisi nostrum quam quis, ratione tempora vel?
             </div>
-            <div>Ab consequuntur doloremque, earum eos excepturi harum hic iste libero nemo non obcaecati pariatur qui
-            quia
-            quo reiciendis repellat rerum similique tempora vel voluptatum! Atque debitis, sapiente! Explicabo minima,
-            nihil!
-            </div>
           </article>
         </Grid>
         <Grid
           item
-          xs={8}
+          xs={7}
           sm={7}
           md={4}
           lg={4}
