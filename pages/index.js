@@ -1,23 +1,20 @@
-import Head from 'next/head'
 import { Element } from 'react-scroll'
 
-import utilsStyles from '../styles/utils.module.css'
-import { Header, Intro, About, Cases } from '../sections'
+import { NavBar, Intro, About, Cases } from '../src/sections'
+import { ScrollToTopButton } from '../src/components'
 
 export default function Home () {
   return (
     <>
-      <Head>
-        <title>ByNadya</title>
-      </Head>
-      <Header theme={utilsStyles.header} />
-      <Intro theme={utilsStyles.intro} />
-      <Element name="about">
+      <NavBar />
+      <Intro />
+      <Element name="About">
         <About />
       </Element>
-      <Element name="cases">
+      <Element name="Cases">
         <Cases />
       </Element>
+      <ScrollToTopButton />
     </>
   )
 }

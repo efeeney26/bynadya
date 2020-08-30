@@ -1,10 +1,10 @@
-import Header from './Header/Header'
+import NavBar from './NavBar/NavBar'
 import Intro from './Intro/Intro'
 import About from './About/About'
 import Cases from './Cases/Cases'
 
 export {
-  Header,
+  NavBar,
   Intro,
   About,
   Cases
