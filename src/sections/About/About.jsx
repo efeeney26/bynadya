@@ -1,7 +1,8 @@
-import { Container, Grid } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { main } from '../../../public'
+import { Layout } from '../../components'
 
 import styles from './About.module.css'
 
@@ -16,11 +17,7 @@ const About = () => {
   const classes = useStyles()
 
   return (
-    <Container
-      component="section"
-      maxWidth={false}
-      disableGutters
-    >
+    <Layout>
       <Grid
         container
         className={classes.root}
@@ -59,7 +56,7 @@ const About = () => {
           <img src={main} alt="main" className={styles.image}/>
         </Grid>
       </Grid>
-    </Container>
+    </Layout>
   )
 }
 

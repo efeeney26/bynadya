@@ -1,17 +1,14 @@
-import { Container, Box } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import { Carousel } from 'react-responsive-carousel'
 
 import { title, background, description } from '../../../public'
+import { Layout } from '../../components'
 
 import styles from './Intro.module.css'
 
 const Intro = () => {
   return (
-    <Container
-      component="section"
-      maxWidth={false}
-      disableGutters
-    >
+    <Layout>
       <Carousel
         autoPlay
         infiniteLoop
@@ -44,7 +41,7 @@ const Intro = () => {
           <img src={description} alt="description" className={styles.img}/>
         </Box>
       </Carousel>
-    </Container>
+    </Layout>
   )
 }
 

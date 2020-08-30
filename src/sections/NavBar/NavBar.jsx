@@ -66,7 +66,16 @@ const NavBar = () => {
               About
             </Link>
           </MenuItem>
-          <MenuItem onClick={handleMenuClose}>Cases</MenuItem>
+          <MenuItem>
+            <Link
+              to="Cases"
+              smooth
+              duration={1000}
+              onClick={handleMenuClose}
+            >
+              Cases
+            </Link>
+          </MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

@@ -1,6 +1,6 @@
 import { Element } from 'react-scroll'
 
-import { NavBar, Intro, About } from '../src/sections'
+import { NavBar, Intro, About, Cases } from '../src/sections'
 import { ScrollToTopButton } from '../src/components'
 
 export default function Home () {
@@ -10,6 +10,9 @@ export default function Home () {
       <Intro />
       <Element name="About">
         <About />
+      </Element>
+      <Element name="Cases">
+        <Cases />
       </Element>
       <ScrollToTopButton />
     </>

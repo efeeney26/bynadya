@@ -1,11 +1,9 @@
-import utilsStyles from '../../../styles/utils.module.css'
-
-import styles from './Cases.module.css'
+import { Layout } from '../../components'
 
 const Cases = () => (
-  <section className={`${utilsStyles.section} ${styles.container}`}>
+  <Layout>
     <h1>Cases</h1>
-  </section>
+  </Layout>
 )
 
 export default Cases
