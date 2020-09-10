@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { Box, GridList, GridListTile, GridListTileBar, Button, Icon } from '@material-ui/core'
+import PropTypes from 'prop-types'
+import { Box, GridList, GridListTile, GridListTileBar, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+
 import { Layout } from '../../components'
-import { cases } from '../../scheme'
+import { useWindowSize } from '../../utils'
 
 const useStyles = makeStyles((theme) => {
-  console.log('the', theme)
-
   return {
     button: {
       margin: theme.spacing(1),
@@ -17,19 +17,20 @@ const useStyles = makeStyles((theme) => {
   }
 })
 
-const Cases = () => {
+const Cases = ({ cases }) => {
   const classes = useStyles()
+  const [width] = useWindowSize()
 
   return (
     <Layout>
       <Box p={2}>
         <GridList
-          cols={2}
+          cols={width < 700 ? 2 : 3}
         >
           {cases.map((caseItem) => (
             <GridListTile
               key={caseItem.id}
-              rows={2}
+              rows={width < 700 ? 2 : 2.7}
             >
               <img
                 src={require(`../../../public/images/${caseItem.img}`)}
@@ -60,6 +61,14 @@ const Cases = () => {
       </Box>
     </Layout>
   )
+}
+
+Cases.propTypes = {
+  cases: PropTypes.arrayOf(PropTypes.object)
+}
+
+Cases.defaultProps = {
+  cases: []
 }
 
 export default Cases

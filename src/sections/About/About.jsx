@@ -1,4 +1,6 @@
-import { Grid } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { main } from '../../../public'
@@ -32,19 +34,29 @@ const About = () => {
           md={5}
           lg={5}
         >
-          <article>
-            <h1>Hello</h1>
-            <div>
+          <Box
+            display="flex"
+            flexDirection="column"
+          >
+            <Typography
+              variant="h4"
+            >
+            Hello
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+            >
             Im Nadya.
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci autem culpa, doloremque facilis
-            inventore ipsam iure labore magni, natus, neque numquam obcaecati omnis optio recusandae rem repellat
-            repudiandae tempora?
-            </div>
-            <div>Autem commodi dolore dolores eligendi est harum impedit inventore laboriosam nostrum quae, quam sapiente
-            similique veniam? Dolorum ex impedit ipsam magni molestiae nemo nisi nostrum quam quis, ratione tempora vel?
-            </div>
-          </article>
+            </Typography>
+            <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci autem culpa, doloremque facilis
+              inventore ipsam iure labore magni, natus, neque numquam obcaecati omnis optio recusandae rem repellat
+              repudiandae tempora?
+            Autem commodi dolore dolores eligendi est harum impedit inventore laboriosam nostrum quae, quam sapiente
+              similique veniam? Dolorum ex impedit ipsam magni molestiae nemo nisi nostrum quam quis, ratione tempora vel?
+            </Typography>
+          </Box>
         </Grid>
         <Grid
           item

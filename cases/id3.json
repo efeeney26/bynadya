@@ -1,0 +1,7 @@
+{
+  "title": "Case 3",
+  "img": "Main.jpg",
+  "author": "Nadya",
+  "description": "<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure minima, non obcaecati repudiandae suscipit\n        totam ut! Dolorem itaque non voluptatibus. Architecto beatae consequuntur eaque earum, enim excepturi rerum\n        saepe unde.\n      </div>\n      <div>Cumque dolore in magni perspiciatis provident? Accusantium blanditiis consequatur dignissimos, dolore,\n        doloribus harum ipsum itaque maxime nihil placeat quisquam quod ratione rerum similique soluta suscipit unde?\n        Autem fuga mollitia placeat.\n      </div>\n      <div>Commodi debitis deserunt dicta dignissimos, doloremque dolorum ea, eveniet ipsam labore, mollitia neque nihil\n        optio saepe sint unde veniam voluptates! Alias aliquid architecto consectetur dicta dignissimos exercitationem\n        natus quia sint!\n      </div>",
+  "images": ["Background.jpg", "Title.jpg", "Main.jpg", "Description.jpg"]
+}

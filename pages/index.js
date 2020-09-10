@@ -1,9 +1,21 @@
+import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 
+import { getCases } from '../utils'
 import { NavBar, Intro, About, Cases } from '../src/sections'
 import { ScrollToTopButton } from '../src/components'
 
-export default function Home () {
+export const getStaticProps = async () => {
+  const allCases = getCases()
+
+  return {
+    props: {
+      allCases
+    }
+  }
+}
+
+export default function Home ({ allCases }) {
   return (
     <>
       <NavBar />
@@ -12,9 +24,17 @@ export default function Home () {
         <About />
       </Element>
       <Element name="Cases">
-        <Cases />
+        <Cases cases={allCases}/>
       </Element>
       <ScrollToTopButton />
     </>
   )
+}
+
+Home.propTypes = {
+  allCases: PropTypes.arrayOf(PropTypes.object)
+}
+
+Home.defaultProps = {
+  allCases: []
 }
