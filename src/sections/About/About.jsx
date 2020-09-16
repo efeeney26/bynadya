@@ -12,6 +12,9 @@ const useStyles = makeStyles(() => ({
   root: {
     height: '100vh',
     flexGrow: 1
+  },
+  description: {
+    textAlign: 'justify'
   }
 }))
 
@@ -34,10 +37,7 @@ const About = () => {
           md={5}
           lg={5}
         >
-          <Box
-            display="flex"
-            flexDirection="column"
-          >
+          <Box>
             <Typography
               variant="h4"
             >
@@ -49,7 +49,9 @@ const About = () => {
             >
             Im Nadya.
             </Typography>
-            <Typography>
+            <Typography
+              paragraph
+            >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci autem culpa, doloremque facilis
               inventore ipsam iure labore magni, natus, neque numquam obcaecati omnis optio recusandae rem repellat
               repudiandae tempora?

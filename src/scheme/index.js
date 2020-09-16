@@ -1,5 +1,5 @@
-import cases from './cases'
+import services from './services'
 
 export {
-  cases
+  services
 }

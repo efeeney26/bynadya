@@ -2,8 +2,9 @@ import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 
 import { getCases } from '../utils'
-import { NavBar, Intro, About, Cases } from '../src/sections'
+import { NavBar, Intro, About, Cases, Services } from '../src/sections'
 import { ScrollToTopButton } from '../src/components'
+import { services } from '../src/scheme'
 
 export const getStaticProps = async () => {
   const allCases = getCases()
@@ -25,6 +26,9 @@ export default function Home ({ allCases }) {
       </Element>
       <Element name="Cases">
         <Cases cases={allCases}/>
+      </Element>
+      <Element name="Services">
+        <Services services={services} />
       </Element>
       <ScrollToTopButton />
     </>
