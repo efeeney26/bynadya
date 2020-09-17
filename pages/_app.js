@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { theme } from '../src/utils'
-import '../styles/globals.css'
 
 function MyApp ({ Component, pageProps }) {
   useEffect(() => {
