@@ -21,6 +21,7 @@ const NavBar = ({ barItems }) => {
     <AppBar
       position="absolute"
       color="transparent"
+      variant="outlined"
     >
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
