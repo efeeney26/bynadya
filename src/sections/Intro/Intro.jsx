@@ -1,48 +1,69 @@
-import { Box } from '@material-ui/core'
-import { Carousel } from 'react-responsive-carousel'
+import PropTypes from 'prop-types'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import { title, background, description } from '../../../public'
-import { Layout } from '../../components'
+import { Layout, Carousel } from '../../components'
 
-import styles from './Intro.module.css'
+const useStyles = makeStyles(() => ({
+  root: {
+    height: '100vh',
+    flexGrow: 1
+  }
+}))
 
-const Intro = () => {
+const Intro = ({ carouselItems }) => {
+  const matches = useMediaQuery('(max-width:700px)')
+  const classes = useStyles()
+
   return (
     <Layout>
-      <Carousel
-        autoPlay
-        infiniteLoop
-        dynamicHeight={false}
-        showThumbs={false}
-        showArrows={false}
-        showIndicators={false}
-        showStatus={false}
-        stopOnHover={false}
-        emulateTouch
-        swipeable
-        useKeyboardArrows
-        transitionTime={700}
-        swipeScrollTolerance={5}
-        interval={8000}
-      >
-        <Box
-          height="100vh"
+      {matches
+        ? <Carousel items={carouselItems} fullHeight={matches} />
+        : <Grid
+          container
+          className={classes.root}
+          justify='space-around'
+          alignItems='center'
+          alignContent='space-around'
         >
-          <img src={title} alt="title" className={styles.img}/>
-        </Box>
-        <Box
-          height="100vh"
-        >
-          <img src={background} alt="background" className={styles.img}/>
-        </Box>
-        <Box
-          height="100vh"
-        >
-          <img src={description} alt="description" className={styles.img}/>
-        </Box>
-      </Carousel>
+          <Grid
+            item
+            sm={5}
+            md={7}
+            lg={7}
+          >
+            <Typography
+              variant="h1"
+            >
+              Brand Visualizer
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            sm={4}
+            md={4}
+            lg={4}
+          >
+            <Carousel items={carouselItems} />
+          </Grid>
+        </Grid>
+      }
     </Layout>
   )
+}
+
+Intro.propTypes = {
+  carouselItems: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    img: PropTypes.string,
+    alt: PropTypes.string
+  }))
+}
+
+Intro.defaultProps = {
+  carouselItems: []
 }
 
 export default Intro

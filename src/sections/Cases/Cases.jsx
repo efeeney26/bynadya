@@ -2,8 +2,7 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { Box, GridList, GridListTile, GridListTileBar, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
-import { useWindowSize } from '../../utils'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -18,17 +17,17 @@ const useStyles = makeStyles((theme) => {
 
 const Cases = ({ cases }) => {
   const classes = useStyles()
-  const [width] = useWindowSize()
+  const matches = useMediaQuery('(max-width:700px)')
 
   return (
     <Box p={2}>
       <GridList
-        cols={width < 700 ? 2 : 3}
+        cols={matches ? 2 : 3}
       >
         {cases.map((caseItem) => (
           <GridListTile
             key={caseItem.id}
-            rows={width < 700 ? 2 : 2.7}
+            rows={matches ? 2 : 2.7}
           >
             <img
               src={require(`../../../public/images/${caseItem.img}`)}

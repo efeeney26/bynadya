@@ -4,10 +4,10 @@ import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { getCaseData, getAllCasesIds } from '../../utils'
 import { Layout } from '../../src/components'
-import { useWindowSize } from '../../src/utils'
 
 export const getStaticPaths = async () => {
   const paths = getAllCasesIds()
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Case = ({ caseData }) => {
   const classes = useStyles()
-  const [width] = useWindowSize()
+  const matches = useMediaQuery('(max-width:700px)')
 
   return (
     <Layout>
@@ -55,13 +55,13 @@ const Case = ({ caseData }) => {
         </Typography>
         <GridList
           className={classes.gridList}
-          cols={width < 700 ? 2.1 : 3.5}
+          cols={matches ? 2.1 : 3.5}
           spacing={2}
         >
           {caseData.images.map((caseDataItem) => (
             <GridListTile
               key={caseDataItem}
-              rows={width < 700 ? 1.5 : 2.5}
+              rows={matches ? 1.5 : 2.5}
             >
               <img src={require(`../../public/images/${caseDataItem}`)} alt="test" />
             </GridListTile>
@@ -76,13 +76,13 @@ const Case = ({ caseData }) => {
         </Typography>
         <GridList
           className={classes.gridList}
-          cols={width < 700 ? 2.1 : 3.5}
+          cols={matches ? 2.1 : 3.5}
           spacing={2}
         >
           {caseData.images.map((caseDataItem) => (
             <GridListTile
               key={caseDataItem}
-              rows={width < 700 ? 1.5 : 2.5}
+              rows={matches ? 1.5 : 2.5}
             >
               <img src={require(`../../public/images/${caseDataItem}`)} alt="test" />
             </GridListTile>

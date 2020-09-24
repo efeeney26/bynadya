@@ -1,6 +1,5 @@
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { main } from '../../../public'
@@ -26,9 +25,9 @@ const About = () => {
       <Grid
         container
         className={classes.root}
-        justify="space-around"
-        alignItems="center"
-        alignContent="space-around"
+        justify='space-around'
+        alignItems='center'
+        alignContent='space-around'
       >
         <Grid
           item
@@ -37,28 +36,26 @@ const About = () => {
           md={5}
           lg={5}
         >
-          <Box>
-            <Typography
-              variant="h4"
-            >
+          <Typography
+            variant="h4"
+          >
             Hello
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-            >
+          </Typography>
+          <Typography
+            variant='subtitle1'
+            gutterBottom
+          >
             Im Nadya.
-            </Typography>
-            <Typography
-              paragraph
-            >
+          </Typography>
+          <Typography
+            paragraph
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci autem culpa, doloremque facilis
               inventore ipsam iure labore magni, natus, neque numquam obcaecati omnis optio recusandae rem repellat
               repudiandae tempora?
             Autem commodi dolore dolores eligendi est harum impedit inventore laboriosam nostrum quae, quam sapiente
               similique veniam? Dolorum ex impedit ipsam magni molestiae nemo nisi nostrum quam quis, ratione tempora vel?
-            </Typography>
-          </Box>
+          </Typography>
         </Grid>
         <Grid
           item
@@ -67,7 +64,7 @@ const About = () => {
           md={4}
           lg={4}
         >
-          <img src={main} alt="main" className={styles.image}/>
+          <img src={main} alt='main' className={styles.image}/>
         </Grid>
       </Grid>
     </Layout>

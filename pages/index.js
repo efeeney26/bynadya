@@ -4,7 +4,7 @@ import { Element } from 'react-scroll'
 import { getCases } from '../utils'
 import { NavBar, Intro, About, Cases, Services } from '../src/sections'
 import { ScrollToTopButton } from '../src/components'
-import { services } from '../src/scheme'
+import { services, intro, navBar } from '../src/scheme'
 
 export const getStaticProps = async () => {
   const allCases = getCases()
@@ -19,8 +19,8 @@ export const getStaticProps = async () => {
 export default function Home ({ allCases }) {
   return (
     <>
-      <NavBar />
-      <Intro />
+      <NavBar barItems={navBar} />
+      <Intro carouselItems={intro} />
       <Element name="About">
         <About />
       </Element>

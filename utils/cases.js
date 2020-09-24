@@ -7,7 +7,7 @@ export const getCases = () => {
   // Get file names under /posts
   const fileNames = fs.readdirSync(casesDirectory)
   return fileNames.map(fileName => {
-    // Remove ".md" from file name to get id
+    // Remove ".json" from file name to get id
     const id = fileName.replace(/\.json$/, '')
 
     // Read markdown file as string
