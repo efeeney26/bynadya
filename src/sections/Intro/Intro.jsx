@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-const Intro = ({ carouselItems }) => {
+const Intro = ({ title, carouselItems }) => {
   const matches = useMediaQuery('(max-width:700px)')
   const classes = useStyles()
 
@@ -37,7 +37,7 @@ const Intro = ({ carouselItems }) => {
             <Typography
               variant="h1"
             >
-              Brand Visualizer
+              {title}
             </Typography>
           </Grid>
           <Grid
@@ -55,6 +55,7 @@ const Intro = ({ carouselItems }) => {
 }
 
 Intro.propTypes = {
+  title: PropTypes.string,
   carouselItems: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     img: PropTypes.string,
@@ -63,6 +64,7 @@ Intro.propTypes = {
 }
 
 Intro.defaultProps = {
+  title: '',
   carouselItems: []
 }
 
