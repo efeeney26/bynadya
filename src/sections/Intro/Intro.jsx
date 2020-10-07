@@ -57,8 +57,7 @@ const Intro = ({ title, carouselItems }) => {
 Intro.propTypes = {
   title: PropTypes.string,
   carouselItems: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    img: PropTypes.string,
+    url: PropTypes.string,
     alt: PropTypes.string
   }))
 }

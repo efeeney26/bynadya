@@ -28,8 +28,7 @@ const Carousel = ({ items, fullHeight }) => (
         height={fullHeight ? '100vh' : '100%'}
       >
         <img
-          key={item.id}
-          src={require(`../../../public/images/${item.img}`)}
+          src={item.url}
           alt={item.alt}
           className={style.img}
         />
@@ -40,8 +39,7 @@ const Carousel = ({ items, fullHeight }) => (
 
 Carousel.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    img: PropTypes.string,
+    url: PropTypes.string,
     alt: PropTypes.string
   })),
   fullHeight: PropTypes.bool
