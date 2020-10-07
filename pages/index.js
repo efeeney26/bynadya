@@ -6,22 +6,23 @@ import { client } from '../prismic-configuration'
 
 import { getCases } from '../utils'
 import { NavBar, Intro, About, Cases, Services } from '../src/sections'
-import { ScrollToTopButton } from '../src/components'
+import { ScrollToTopButton, Preview } from '../src/components'
 import { services, intro, navBar } from '../src/scheme'
 
-export const getStaticProps = async () => {
-  const introSection = await client.getSingle('intro_section', {})
+export const getStaticProps = async (context) => {
+  const introSection = await client.getSingle('intro_section', { ref: context?.previewData?.ref })
   const allCases = getCases()
 
   return {
     props: {
+      preview: context.preview ? context.preview : null,
       introSection,
       allCases
     }
   }
 }
 
-export default function Home ({ introSection, allCases }) {
+export default function Home ({ preview, introSection, allCases }) {
   return (
     <>
       <NavBar barItems={navBar}/>
@@ -39,16 +40,19 @@ export default function Home ({ introSection, allCases }) {
         <Services services={services}/>
       </Element>
       <ScrollToTopButton/>
+      {preview && <Preview /> }
     </>
   )
 }
 
 Home.propTypes = {
+  preview: PropTypes.bool,
   introSection: PropTypes.object,
   allCases: PropTypes.arrayOf(PropTypes.object)
 }
 
 Home.defaultProps = {
+  preview: false,
   introSection: {},
   allCases: []
 }
