@@ -1,13 +1,15 @@
-import { useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 import Prismic from 'prismic-javascript'
+import Lottie from 'react-lottie'
+import animationData from '../public/lottie/heart-more-photos.json'
 
 import { client } from '../prismic-configuration'
 
 import { getGroupedData } from '../src/utils'
 import { NavBar, Intro, About, Cases, Services } from '../src/sections'
-import { ScrollToTopButton, Preview } from '../src/components'
+import { ScrollToTopButton, Preview, Layout } from '../src/components'
 import { navBar } from '../src/scheme'
 
 export const getStaticProps = async (context) => {
@@ -29,31 +31,54 @@ export const getStaticProps = async (context) => {
 
 export default function Home ({ preview, introSection, aboutSection, services, cases }) {
   const carouselItems = useMemo(() => getGroupedData(introSection?.data?.carousel), [introSection.data.carousel])
+  const [isAnimationCompleted, setAnimationCompleted] = useState(false)
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
 
   return (
-    <>
-      <NavBar barItems={navBar}/>
-      <Intro
-        title={introSection.data.title}
-        carouselItems={carouselItems}
-      />
-      <Element name="About">
-        <About
-          title={aboutSection.data.title}
-          subTitle={aboutSection.data.subtitle}
-          description={aboutSection.data.description}
-          image={aboutSection.data.image}
+    !isAnimationCompleted
+      ? <Layout>
+        <Lottie
+          options={defaultOptions}
+          speed={0.5}
+          eventListeners={[
+            {
+              eventName: 'complete',
+              callback: () => setAnimationCompleted(true)
+            }
+          ]}
         />
-      </Element>
-      <Element name="Cases">
-        <Cases cases={cases.results} />
-      </Element>
-      <Element name="Services">
-        <Services services={services.results} />
-      </Element>
-      <ScrollToTopButton/>
-      {preview && <Preview /> }
-    </>
+      </Layout>
+      : <>
+        <NavBar barItems={navBar}/>
+        <Intro
+          title={introSection.data.title}
+          carouselItems={carouselItems}
+        />
+        <Element name="About">
+          <About
+            title={aboutSection.data.title}
+            subTitle={aboutSection.data.subtitle}
+            description={aboutSection.data.description}
+            image={aboutSection.data.image}
+          />
+        </Element>
+        <Element name="Cases">
+          <Cases cases={cases.results}/>
+        </Element>
+        <Element name="Services">
+          <Services services={services.results}/>
+        </Element>
+        <ScrollToTopButton/>
+        {preview && <Preview/>}
+      </>
   )
 }
 
