@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { RichText } from 'prismic-reactjs'
 
 import { Layout, Carousel } from '../../components'
 
@@ -37,7 +38,7 @@ const Intro = ({ title, carouselItems }) => {
             <Typography
               variant="h1"
             >
-              {title}
+              {RichText.asText(title)}
             </Typography>
           </Grid>
           <Grid
@@ -55,7 +56,7 @@ const Intro = ({ title, carouselItems }) => {
 }
 
 Intro.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.array,
   carouselItems: PropTypes.arrayOf(PropTypes.shape({
     url: PropTypes.string,
     alt: PropTypes.string
@@ -63,7 +64,7 @@ Intro.propTypes = {
 }
 
 Intro.defaultProps = {
-  title: '',
+  title: [],
   carouselItems: []
 }
 

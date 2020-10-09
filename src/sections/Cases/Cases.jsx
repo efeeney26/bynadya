@@ -1,8 +1,13 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import { Box, GridList, GridListTile, GridListTileBar, Button } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
+import GridList from '@material-ui/core/GridList'
+import GridListTile from '@material-ui/core/GridListTile'
+import GridListTileBar from '@material-ui/core/GridListTileBar'
+import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { RichText } from 'prismic-reactjs'
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -24,22 +29,22 @@ const Cases = ({ cases }) => {
       <GridList
         cols={matches ? 2 : 3}
       >
-        {cases.map((caseItem) => (
+        {cases.map(({ data, uid }) => (
           <GridListTile
-            key={caseItem.id}
+            key={uid}
             rows={matches ? 2 : 2.7}
           >
             <img
-              src={require(`../../../public/images/${caseItem.img}`)}
-              alt={caseItem.title}
+              src={data.image.url}
+              alt={data.image.alt}
             />
             <GridListTileBar
-              title={caseItem.title}
-              subtitle={<span>by: {caseItem.author}</span>}
+              title={RichText.asText(data.title)}
+              subtitle={<span>{data.date}</span>}
               actionIcon={
                 <Link
-                  href="/cases/[id]"
-                  as={`/cases/${caseItem.id}`}
+                  href="cases/[uid]"
+                  as={`/cases/${uid}`}
                 >
                   <Button
                     variant="contained"

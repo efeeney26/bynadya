@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
@@ -5,24 +6,32 @@ import GridListTile from '@material-ui/core/GridListTile'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Prismic from 'prismic-javascript'
+import { RichText } from 'prismic-reactjs'
 
-import { getCaseData, getAllCasesIds } from '../../utils'
 import { Layout } from '../../src/components'
+import { client } from '../../prismic-configuration'
+import { getGroupedData } from '../../src/utils'
 
-export const getStaticPaths = async () => {
-  const paths = getAllCasesIds()
+export const getStaticProps = async ({ params }) => {
+  const { uid } = params
+  const { data } = await client.getByUID('case_page', uid, {})
   return {
-    paths,
-    fallback: false
+    props: { data }
   }
 }
 
-export const getStaticProps = async ({ params }) => {
-  const caseData = await getCaseData(params.id)
-  return {
-    props: {
-      caseData
+export const getStaticPaths = async () => {
+  const { results } = await client.query(Prismic.Predicates.at('document.type', 'case'))
+
+  const paths = results.map(caseItem => ({
+    params: {
+      uid: caseItem.uid
     }
+  }))
+  return {
+    paths,
+    fallback: false
   }
 }
 
@@ -37,7 +46,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Case = ({ caseData }) => {
+const Case = ({ data }) => {
+  const carouselBeforeItems = useMemo(() => getGroupedData(data?.carouselbefore), [data.carouselbefore])
+  const carouselAfterItems = useMemo(() => getGroupedData(data?.carouselafter), [data.carouselafter])
   const classes = useStyles()
   const matches = useMediaQuery('(max-width:700px)')
 
@@ -51,19 +62,19 @@ const Case = ({ caseData }) => {
           align="center"
           gutterBottom
         >
-          {caseData.id}
+          {RichText.asText(data.title)}
         </Typography>
         <GridList
           className={classes.gridList}
           cols={matches ? 2.1 : 3.5}
           spacing={2}
         >
-          {caseData.images.map((caseDataItem) => (
+          {carouselBeforeItems.map((beforeItem) => (
             <GridListTile
-              key={caseDataItem}
+              key={beforeItem.id}
               rows={matches ? 1.5 : 2.5}
             >
-              <img src={require(`../../public/images/${caseDataItem}`)} alt="test" />
+              <img src={beforeItem.url} alt={beforeItem.alt} />
             </GridListTile>
           ))}
         </GridList>
@@ -72,19 +83,19 @@ const Case = ({ caseData }) => {
           align="left"
           className={classes.description}
         >
-          {caseData.description}
+          {RichText.asText(data.description)}
         </Typography>
         <GridList
           className={classes.gridList}
           cols={matches ? 2.1 : 3.5}
           spacing={2}
         >
-          {caseData.images.map((caseDataItem) => (
+          {carouselAfterItems.map((afterItem) => (
             <GridListTile
-              key={caseDataItem}
+              key={afterItem.id}
               rows={matches ? 1.5 : 2.5}
             >
-              <img src={require(`../../public/images/${caseDataItem}`)} alt="test" />
+              <img src={afterItem.url} alt={afterItem.alt} />
             </GridListTile>
           ))}
         </GridList>
@@ -94,11 +105,11 @@ const Case = ({ caseData }) => {
 }
 
 Case.propTypes = {
-  caseData: PropTypes.object
+  data: PropTypes.object
 }
 
 Case.defaultProps = {
-  caseData: null
+  data: null
 }
 
 export default Case

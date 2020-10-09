@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import { RichText } from 'prismic-reactjs'
 
 import { Layout } from '../../components'
 
@@ -40,18 +41,18 @@ const About = ({ title, subTitle, description, image }) => {
             variant="h4"
             gutterBottom
           >
-            {title}
+            {RichText.asText(title)}
           </Typography>
           <Typography
             variant='subtitle1'
             gutterBottom
           >
-            {subTitle}
+            {RichText.asText(subTitle)}
           </Typography>
           <Typography
             paragraph
           >
-            {description}
+            {RichText.asText(description)}
           </Typography>
         </Grid>
         <Grid
@@ -69,9 +70,9 @@ const About = ({ title, subTitle, description, image }) => {
 }
 
 About.propTypes = {
-  title: PropTypes.string,
-  subTitle: PropTypes.string,
-  description: PropTypes.string,
+  title: PropTypes.array,
+  subTitle: PropTypes.array,
+  description: PropTypes.array,
   image: PropTypes.shape({
     url: PropTypes.string,
     alt: PropTypes.string
@@ -79,9 +80,9 @@ About.propTypes = {
 }
 
 About.defaultProps = {
-  title: '',
-  subTitle: '',
-  description: '',
+  title: [],
+  subTitle: [],
+  description: [],
   image: {
     url: '',
     alt: 'profile'

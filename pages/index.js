@@ -1,54 +1,55 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
-import { RichText } from 'prismic-reactjs'
+import Prismic from 'prismic-javascript'
 
 import { client } from '../prismic-configuration'
 
-import { getCases } from '../utils'
 import { getGroupedData } from '../src/utils'
 import { NavBar, Intro, About, Cases, Services } from '../src/sections'
 import { ScrollToTopButton, Preview } from '../src/components'
-import { services, navBar } from '../src/scheme'
+import { navBar } from '../src/scheme'
 
 export const getStaticProps = async (context) => {
   const introSection = await client.getSingle('intro_section', { ref: context?.previewData?.ref })
   const aboutSection = await client.getSingle('about', { ref: context?.previewData?.ref })
-  const allCases = getCases()
+  const services = await client.query(Prismic.Predicates.at('document.type', 'service'), { ref: context?.previewData?.ref })
+  const cases = await client.query(Prismic.Predicates.at('document.type', 'case'), { ref: context?.previewData?.ref })
 
   return {
     props: {
       preview: context.preview ?? null,
       introSection,
       aboutSection,
-      allCases
+      services,
+      cases
     }
   }
 }
 
-export default function Home ({ preview, introSection, aboutSection, allCases }) {
-  const carouselItems = introSection?.data?.carousel && useMemo(() => getGroupedData(introSection.data.carousel[0]), [introSection.data.carousel[0]])
+export default function Home ({ preview, introSection, aboutSection, services, cases }) {
+  const carouselItems = useMemo(() => getGroupedData(introSection?.data?.carousel), [introSection.data.carousel])
 
   return (
     <>
       <NavBar barItems={navBar}/>
       <Intro
-        title={RichText.asText(introSection.data.title)}
+        title={introSection.data.title}
         carouselItems={carouselItems}
       />
       <Element name="About">
         <About
-          title={RichText.asText(aboutSection.data.title)}
-          subTitle={RichText.asText(aboutSection.data.subtitle)}
-          description={RichText.asText(aboutSection.data.description)}
+          title={aboutSection.data.title}
+          subTitle={aboutSection.data.subtitle}
+          description={aboutSection.data.description}
           image={aboutSection.data.image}
         />
       </Element>
       <Element name="Cases">
-        <Cases cases={allCases}/>
+        <Cases cases={cases.results} />
       </Element>
       <Element name="Services">
-        <Services services={services}/>
+        <Services services={services.results} />
       </Element>
       <ScrollToTopButton/>
       {preview && <Preview /> }
@@ -60,12 +61,14 @@ Home.propTypes = {
   preview: PropTypes.bool,
   introSection: PropTypes.object,
   aboutSection: PropTypes.object,
-  allCases: PropTypes.arrayOf(PropTypes.object)
+  services: PropTypes.object,
+  cases: PropTypes.object
 }
 
 Home.defaultProps = {
   preview: false,
   introSection: {},
   aboutSection: {},
-  allCases: []
+  services: {},
+  cases: {}
 }

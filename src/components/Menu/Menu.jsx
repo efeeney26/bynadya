@@ -4,7 +4,7 @@ import IconButton from '@material-ui/core/IconButton'
 import { Menu as MenuIcon } from '@material-ui/icons'
 import UIMenu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
-import Button from "@material-ui/core/Button"
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-scroll'
 
 const Menu = ({ items, mobileView }) => {

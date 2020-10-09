@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Container } from '@material-ui/core'
+import Container from '@material-ui/core/Container'
 
 const Layout = ({ children }) => (
   <Container

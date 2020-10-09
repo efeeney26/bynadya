@@ -3,7 +3,7 @@ import Fab from '@material-ui/core/Fab'
 import Zoom from '@material-ui/core/Zoom'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import { makeStyles } from '@material-ui/core/styles'
-import { KeyboardArrowUp } from '@material-ui/icons'
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import { animateScroll as scroll } from 'react-scroll'
 
 const useStyles = makeStyles((theme) => ({
