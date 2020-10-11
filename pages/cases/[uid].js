@@ -9,7 +9,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 
-import { Layout } from '../../src/components'
+import { Layout, Background } from '../../src/components'
 import { client } from '../../prismic-configuration'
 import { getGroupedData } from '../../src/utils'
 
@@ -54,6 +54,7 @@ const Case = ({ data }) => {
 
   return (
     <Layout>
+      <Background />
       <Box
         p={2}
       >

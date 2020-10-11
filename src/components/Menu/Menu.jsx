@@ -6,8 +6,17 @@ import UIMenu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-scroll'
+import { makeStyles } from '@material-ui/core/styles'
+import grey from '@material-ui/core/colors/grey'
+
+const useStyles = makeStyles((theme) => ({
+  link: {
+    color: grey[900]
+  }
+}))
 
 const Menu = ({ items, mobileView }) => {
+  const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleMenuClick = useCallback((event) => {
@@ -50,6 +59,7 @@ const Menu = ({ items, mobileView }) => {
           items.map((item) => (
             <MenuItem
               key={item.id}
+              className={classes.link}
             >
               <Link
                 to={item.title}

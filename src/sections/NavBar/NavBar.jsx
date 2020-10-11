@@ -24,7 +24,7 @@ const NavBar = ({ barItems }) => {
       variant="outlined"
     >
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h6" className={classes.title} color='textPrimary'>
             ByNadya
         </Typography>
         <Menu
