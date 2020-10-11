@@ -18,27 +18,38 @@ const Background = () => {
     >
       <Particles
         style={{
-          backgroundColor: 'black',
+          background: 'linear-gradient(to right, #a8c0ff, #3f2b96)',
           minHeight: '100vh',
           minWidth: '100vw'
         }}
         params={{
           particles: {
             number: {
-              value: 50
-            },
-            size: {
-              value: 3
-            }
-          },
-          interactivity: {
-            events: {
-              onhover: {
+              value: 160,
+              density: {
                 enable: false
               }
+            },
+            size: {
+              value: 3,
+              random: true,
+              anim: {
+                speed: 2,
+                size_min: 0.3
+              }
+            },
+            line_linked: {
+              enable: false
+            },
+            move: {
+              random: true,
+              speed: 1,
+              direction: 'bottom-right',
+              out_mode: 'out'
             }
           }
-        }} />
+        }}
+      />
     </Box>
   )
 }
