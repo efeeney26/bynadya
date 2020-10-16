@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 import Prismic from 'prismic-javascript'
@@ -12,6 +12,15 @@ import { getGroupedData } from '../src/utils'
 import { NavBar, Intro, About, Cases, Services } from '../src/sections'
 import { ScrollToTopButton, Preview, Layout, Background } from '../src/components'
 import { navBar } from '../src/scheme'
+
+const defaultOptions = {
+  loop: false,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice'
+  }
+}
 
 export const getStaticProps = async (context) => {
   const introSection = await client.getSingle('intro_section', { ref: context?.previewData?.ref })
@@ -34,14 +43,7 @@ export default function Home ({ preview, introSection, aboutSection, services, c
   const carouselItems = useMemo(() => getGroupedData(introSection?.data?.carousel), [introSection.data.carousel])
   const [isAnimationCompleted, setAnimationCompleted] = useState(false)
 
-  const defaultOptions = {
-    loop: false,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  }
+  const handleAnimationComplete = useCallback(() => setAnimationCompleted(true), [setAnimationCompleted])
 
   return (
     !isAnimationCompleted
@@ -52,7 +54,7 @@ export default function Home ({ preview, introSection, aboutSection, services, c
           eventListeners={[
             {
               eventName: 'complete',
-              callback: () => setAnimationCompleted(true)
+              callback: handleAnimationComplete
             }
           ]}
         />

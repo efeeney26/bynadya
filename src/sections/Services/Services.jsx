@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 
 import { Layout, ServiceCard } from '../../components'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     minHeight: '100vh',
     flexGrow: 1
@@ -23,17 +23,17 @@ const Services = ({ services }) => {
         <Grid
           container
           className={classes.root}
-          justify="space-around"
-          spacing={2}
+          justify="space-between"
+          spacing={3}
         >
           {services.map((service) => (
             <Grid
               key={service.uid}
               item
               xs={12}
-              sm={10}
-              md={5}
-              lg={5}
+              sm={6}
+              md={6}
+              lg={4}
             >
               <ServiceCard service={service.data} />
             </Grid>

@@ -1,9 +1,6 @@
 import { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
-import CardHeader from '@material-ui/core/CardHeader'
-import Avatar from '@material-ui/core/Avatar'
-import CameraEnhanceIcon from '@material-ui/icons/CameraEnhance'
 import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
@@ -14,14 +11,20 @@ import Collapse from '@material-ui/core/Collapse'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded'
+import RemoveOutlinedIcon from '@material-ui/icons/RemoveOutlined'
 import ListItemText from '@material-ui/core/ListItemText'
 import Card from '@material-ui/core/Card'
 import { makeStyles } from '@material-ui/core/styles'
-import { cyan, green } from '@material-ui/core/colors'
 import { RichText } from 'prismic-reactjs'
 
 const useStyles = makeStyles((theme) => ({
+  card: {
+    transition: '0.3s',
+    boxShadow: '0 3px 15px -5px white',
+    '&:hover': {
+      boxShadow: '0 16px 70px -12.125px white'
+    }
+  },
   media: {
     height: 0,
     paddingTop: '56.25%' // 16:9
@@ -35,11 +38,8 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)'
   },
-  avatar: {
-    backgroundColor: cyan[500]
-  },
   listAvatar: {
-    backgroundColor: green[300]
+    backgroundColor: theme.palette.primary
   },
   cardFullDescription: {
     paddingTop: 0,
@@ -60,29 +60,33 @@ const ServiceCard = ({ service }) => {
   }, [isCardExpanded, setCardExpand])
 
   return (
-    <Card>
-      <CardHeader
-        titleTypographyProps={{
-          variant: 'h6',
-          color: 'textSecondary'
-        }}
-        subheaderTypographyProps={{
-          variant: 'subtitle1'
-        }}
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            <CameraEnhanceIcon/>
-          </Avatar>
-        }
-        title={RichText.asText(service.title)}
-        subheader={RichText.asText(service.subheader)}
-      />
+    <Card
+      className={classes.card}
+    >
       <CardMedia
         className={classes.media}
         image={service.image.url}
         title={service.image.alt}
       />
       <CardContent>
+        {service?.title.length &&
+          <Typography
+            color="textSecondary"
+            variant="h6"
+            gutterBottom
+          >
+            {RichText.asText(service.title)}
+          </Typography>
+        }
+        {service?.subheader?.length &&
+          <Typography
+            variant="body1"
+            color="textSecondary"
+            gutterBottom
+          >
+            {RichText.asText(service.subheader)}
+          </Typography>
+        }
         {service?.description?.length &&
           <Typography variant="body2" color="textSecondary" component="p">
             {RichText.asText(service.description)}
@@ -111,7 +115,7 @@ const ServiceCard = ({ service }) => {
               classes={{ root: classes.cardFullDescription }}
             >
               {service?.fulldescriptionsubheader?.length &&
-                <Typography variant="h6" align="center">
+                <Typography variant="h6" align="center" color="textSecondary">
                   {RichText.asText(service.fulldescriptionsubheader)}
                 </Typography>
               }
@@ -121,11 +125,9 @@ const ServiceCard = ({ service }) => {
                     key={RichText.asText(descriptionItem.fulldescription)}
                   >
                     <ListItemAvatar>
-                      <Avatar className={classes.listAvatar}>
-                        <CheckCircleRoundedIcon/>
-                      </Avatar>
+                      <RemoveOutlinedIcon color="disabled"/>
                     </ListItemAvatar>
-                    <ListItemText primary={RichText.asText(descriptionItem.fulldescription)}/>
+                    <ListItemText secondary={RichText.asText(descriptionItem.fulldescription)}/>
                   </ListItem>
                 ))}
               </List>

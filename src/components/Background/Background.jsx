@@ -27,7 +27,7 @@ const Background = () => {
         params={{
           particles: {
             number: {
-              value: matches ? 25 : 60,
+              value: matches ? 40 : 60,
               density: {
                 enable: true,
                 value_area: 1500

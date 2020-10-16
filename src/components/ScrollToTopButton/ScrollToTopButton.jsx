@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     bottom: theme.spacing(2),
-    right: theme.spacing(2)
+    right: theme.spacing(2),
+    backgroundColor: theme.palette.primary
   }
 }))
 
@@ -27,7 +28,7 @@ const ScrollToTopButton = () => {
 
   return (
     <Zoom in={trigger}>
-      <Fab color="secondary" size="small" aria-label="scroll back to top" className={classes.root} onClick={handleClick}>
+      <Fab size="small" aria-label="scroll back to top" className={classes.root} onClick={handleClick}>
         <KeyboardArrowUp />
       </Fab>
     </Zoom>

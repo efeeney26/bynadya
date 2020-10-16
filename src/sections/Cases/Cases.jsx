@@ -28,6 +28,7 @@ const Cases = ({ cases }) => {
     <Box p={2}>
       <GridList
         cols={matches ? 2 : 3}
+        spacing={24}
       >
         {cases.map(({ data, uid }) => (
           <GridListTile
