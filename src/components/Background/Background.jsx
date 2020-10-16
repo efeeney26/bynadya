@@ -1,6 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Particles from 'react-particles-js'
 import { makeStyles } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -11,6 +12,7 @@ const useStyles = makeStyles(() => ({
 
 const Background = () => {
   const classes = useStyles()
+  const matches = useMediaQuery('(max-width:700px)')
 
   return (
     <Box
@@ -18,36 +20,39 @@ const Background = () => {
     >
       <Particles
         style={{
-          background: 'linear-gradient(to right, #a8c0ff, #3f2b96)',
+          background: '#000000',
           minHeight: '100vh',
           minWidth: '100vw'
         }}
         params={{
           particles: {
             number: {
-              value: 160,
+              value: matches ? 25 : 60,
               density: {
-                enable: false
-              }
-            },
-            size: {
-              value: 3,
-              random: true,
-              anim: {
-                speed: 2,
-                size_min: 0.3
+                enable: true,
+                value_area: 1500
               }
             },
             line_linked: {
-              enable: false
+              enable: true,
+              opacity: 0.15
             },
             move: {
-              random: true,
-              speed: 1,
-              direction: 'bottom-right',
-              out_mode: 'out'
+              direction: 'right',
+              speed: 0.2
+            },
+            size: {
+              value: 1
+            },
+            opacity: {
+              anim: {
+                enable: true,
+                speed: 1,
+                opacity_min: 0.05
+              }
             }
-          }
+          },
+          retina_detect: true
         }}
       />
     </Box>
