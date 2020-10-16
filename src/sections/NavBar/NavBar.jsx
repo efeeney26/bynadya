@@ -21,10 +21,10 @@ const NavBar = ({ barItems }) => {
     <AppBar
       position="absolute"
       color="transparent"
-      variant="outlined"
+      elevation={0}
     >
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h6" className={classes.title} color='textPrimary'>
             ByNadya
         </Typography>
         <Menu

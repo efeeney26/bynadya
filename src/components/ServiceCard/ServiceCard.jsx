@@ -63,7 +63,8 @@ const ServiceCard = ({ service }) => {
     <Card>
       <CardHeader
         titleTypographyProps={{
-          variant: 'h6'
+          variant: 'h6',
+          color: 'textSecondary'
         }}
         subheaderTypographyProps={{
           variant: 'subtitle1'
