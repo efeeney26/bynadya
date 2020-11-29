@@ -31,6 +31,14 @@ const Intro = ({ title, carouselItems }) => {
         >
           <Grid
             item
+            sm={4}
+            md={4}
+            lg={4}
+          >
+            <Carousel items={carouselItems} />
+          </Grid>
+          <Grid
+            item
             sm={5}
             md={7}
             lg={7}
@@ -40,14 +48,6 @@ const Intro = ({ title, carouselItems }) => {
             >
               {RichText.asText(title)}
             </Typography>
-          </Grid>
-          <Grid
-            item
-            sm={4}
-            md={4}
-            lg={4}
-          >
-            <Carousel items={carouselItems} />
           </Grid>
         </Grid>
       }
