@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -10,9 +10,7 @@ import { Layout, Carousel } from '../../components'
 const useStyles = makeStyles(() => ({
   root: {
     height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end'
+    flexGrow: 1
   }
 }))
 
@@ -24,19 +22,34 @@ const Intro = ({ title, carouselItems }) => {
     <Layout>
       {matches
         ? <Carousel items={carouselItems} fullHeight={matches} />
-        : <Box
-          p={4}
+        : <Grid
+          container
           className={classes.root}
-          style={{
-            background: `left bottom / 35% no-repeat url(${carouselItems[2].url})`
-          }}
+          justify='space-around'
+          alignItems='center'
+          alignContent='space-around'
         >
-          <Typography
-            variant="h1"
+          <Grid
+            item
+            sm={5}
+            md={7}
+            lg={7}
           >
-            {RichText.asText(title)}
-          </Typography>
-        </Box>
+            <Typography
+              variant="h1"
+            >
+              {RichText.asText(title)}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            sm={4}
+            md={4}
+            lg={4}
+          >
+            <Carousel items={carouselItems} />
+          </Grid>
+        </Grid>
       }
     </Layout>
   )
