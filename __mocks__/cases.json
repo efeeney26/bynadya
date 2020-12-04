@@ -1,0 +1,61 @@
+{
+  "page": 1,
+  "results_per_page": 20,
+  "results_size": 4,
+  "total_results_size": 4,
+  "total_pages": 1,
+  "next_page": null,
+  "prev_page": null,
+  "results": [
+    {
+      "id": "X3-PmRUAACgAlMo7",
+      "uid": "id4",
+      "type": "case",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3-PmRUAACgAlMo7%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T22:16:52+0000",
+      "last_publication_date": "2020-10-08T22:30:08+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X3-PgRUAACkAlMnF",
+      "uid": "id3",
+      "type": "case",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3-PgRUAACkAlMnF%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T22:15:45+0000",
+      "last_publication_date": "2020-10-08T22:29:55+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X3-LAhUAACoAlLYX",
+      "uid": "id1",
+      "type": "case",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3-LAhUAACoAlLYX%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T22:14:42+0000",
+      "last_publication_date": "2020-10-08T22:29:21+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X3-PVxUAACgAlMkC",
+      "uid": "id2",
+      "type": "case",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3-PVxUAACgAlMkC%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T22:15:24+0000",
+      "last_publication_date": "2020-10-08T22:29:40+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    }
+  ],
+  "version": "c00c189",
+  "license": "All Rights Reserved"
+}

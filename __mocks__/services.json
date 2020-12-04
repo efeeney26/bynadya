@@ -1,0 +1,85 @@
+{
+  "page": 1,
+  "results_per_page": 20,
+  "results_size": 6,
+  "total_results_size": 6,
+  "total_pages": 1,
+  "next_page": null,
+  "prev_page": null,
+  "results": [
+    {
+      "id": "X39_TRUAAGuZlICx",
+      "uid": "association-test",
+      "type": "service",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X39_TRUAAGuZlICx%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T21:18:02+0000",
+      "last_publication_date": "2020-11-30T19:03:10+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X37lCxUAACkAkcDZ",
+      "uid": "image-book",
+      "type": "service",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X37lCxUAACkAkcDZ%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T20:55:50+0000",
+      "last_publication_date": "2020-11-30T18:23:37+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X388qxUAAGuZk1Fl",
+      "uid": "brand-visualization",
+      "type": "service",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X388qxUAAGuZk1Fl%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T20:58:34+0000",
+      "last_publication_date": "2020-11-30T18:26:13+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X389pBUAACoAk1Xa",
+      "uid": "content-manager",
+      "type": "service",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X389pBUAACoAk1Xa%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T21:01:50+0000",
+      "last_publication_date": "2020-11-30T18:39:46+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X39-qRUAACgAlH3O",
+      "uid": "color-typing",
+      "type": "service",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X39-qRUAACgAlH3O%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T21:06:13+0000",
+      "last_publication_date": "2020-11-30T18:50:29+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    },
+    {
+      "id": "X3-ChRUAACoAlI99",
+      "uid": "account-parsing",
+      "type": "service",
+      "href": "https://bynadya.cdn.prismic.io/api/v1/documents/search?ref=X8VFrhMAACMAZbUM&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3-ChRUAACoAlI99%22%29+%5D%5D",
+      "tags": [],
+      "first_publication_date": "2020-10-08T21:21:23+0000",
+      "last_publication_date": "2020-11-30T18:49:23+0000",
+      "linked_documents": [],
+      "lang": "ru",
+      "alternate_languages": []
+    }
+  ],
+  "version": "c00c189",
+  "license": "All Rights Reserved"
+}
