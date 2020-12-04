@@ -14,5 +14,14 @@ export const theme = createMuiTheme({
         height: '100vh'
       }
     }
+  },
+  typography: {
+    h1: {
+      fontFamily: ['Kurale', 'cursive']
+    },
+    fontFamily: [
+      'Lobster',
+      'cursive'
+    ].join(',')
   }
 })

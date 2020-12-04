@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { RichText } from 'prismic-reactjs'
 
 import { Layout, Carousel } from '../../components'
 
 const useStyles = makeStyles(() => ({
-  root: {
+  box: {
+    height: '100vh'
+  },
+  grid: {
     height: '100vh',
-    flexGrow: 1
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   }
 }))
 
@@ -22,34 +27,36 @@ const Intro = ({ title, carouselItems }) => {
     <Layout>
       {matches
         ? <Carousel items={carouselItems} fullHeight={matches} />
-        : <Grid
-          container
-          className={classes.root}
-          justify='space-around'
-          alignItems='center'
-          alignContent='space-around'
+        : <Box
+          p={4}
+          className={classes.box}
+          style={{
+            background: `left bottom / 35% no-repeat url(${carouselItems[2].url})`
+          }}
         >
           <Grid
-            item
-            sm={4}
-            md={4}
-            lg={4}
+            container
+            className={classes.grid}
           >
-            <Carousel items={carouselItems} />
-          </Grid>
-          <Grid
-            item
-            sm={5}
-            md={7}
-            lg={7}
-          >
-            <Typography
-              variant="h1"
+            <Grid
+              item
+              sm={5}
+              md={7}
+              lg={8}
             >
-              {RichText.asText(title)}
-            </Typography>
+              <Typography
+                variant="h1"
+              >
+                Визуализатор бренда
+              </Typography>
+              <Typography
+                variant="h1"
+              >
+                Контент менеджер
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
       }
     </Layout>
   )
