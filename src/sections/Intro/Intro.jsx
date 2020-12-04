@@ -7,21 +7,14 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { Layout, Carousel } from '../../components'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   box: {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'center',
-    textAlign: 'center'
+    height: '100vh'
   },
   grid: {
     height: '100vh',
     display: 'flex',
     alignItems: 'center',
-    alignContent: 'center',
     justifyContent: 'flex-end'
   }
 }))
@@ -33,32 +26,12 @@ const Intro = ({ title, carouselItems }) => {
   return (
     <Layout>
       {matches
-        ? <Box
-          className={classes.box}
-          style={{
-            background: `bottom / 80% no-repeat url(${carouselItems[2].url})`
-          }}
-        >
-          <Box
-            height='50vh'
-          >
-            <Typography
-              variant="h2"
-            >
-            Vizualizator Brenda
-            </Typography>
-            <Typography
-              variant="h2"
-            >
-            Kontent mened@er
-            </Typography>
-          </Box>
-        </Box>
+        ? <Carousel items={carouselItems} fullHeight={matches} />
         : <Box
           p={4}
           className={classes.box}
           style={{
-            background: `left bottom / 40% no-repeat url(${carouselItems[2].url})`
+            background: `left bottom / 35% no-repeat url(${carouselItems[2].url})`
           }}
         >
           <Grid
@@ -74,12 +47,12 @@ const Intro = ({ title, carouselItems }) => {
               <Typography
                 variant="h1"
               >
-                Vizualizator Brenda
+                Визуализатор бренда
               </Typography>
               <Typography
                 variant="h1"
               >
-                Kontent mened@er
+                Контент менеджер
               </Typography>
             </Grid>
           </Grid>

@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import '../src/styles/fonts.css'
 
 import { theme } from '../src/utils'
 

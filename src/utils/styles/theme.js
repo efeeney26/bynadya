@@ -17,10 +17,7 @@ export const theme = createMuiTheme({
   },
   typography: {
     h1: {
-      fontFamily: ['Delija'].join(',')
-    },
-    h2: {
-      fontFamily: ['Delija'].join(',')
+      fontFamily: ['Kurale', 'cursive']
     },
     fontFamily: [
       'Lobster',
