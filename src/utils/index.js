@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 
-import { theme } from './styles/theme'
+import { theme } from './theme'
 
 export const getGroupedData = (data) => {
   if (data) {
