@@ -1,109 +1,66 @@
 import PropTypes from 'prop-types'
-import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import { makeStyles } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import { Layout } from '../../components'
-
-const useStyles = makeStyles(() => ({
-  box: {
+const useStyles = makeStyles((theme) => ({
+  mainBox: {
     height: '100vh',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     alignContent: 'center',
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundPosition: 'bottom',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '80%',
+    [theme.breakpoints.up('md')]: {
+      backgroundPosition: 'left bottom',
+      backgroundSize: '40%',
+      alignItems: 'center',
+      justifyContent: 'flex-end'
+    }
   },
-  grid: {
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'flex-end'
+  descriptionBox: {
+    height: '50vh'
+  },
+  divider: {
+    backgroundColor: 'white',
+    margin: theme.spacing(2, 0)
   }
 }))
 
 const Intro = ({ title, carouselItems }) => {
-  const matches = useMediaQuery('(max-width:700px)')
   const classes = useStyles()
 
   return (
-    <Layout>
-      {matches
-        ? <Box
-          p={2}
-          className={classes.box}
-          style={{
-            background: `bottom / 80% no-repeat url(${carouselItems[2].url})`
-          }}
+    <Box
+      p={4}
+      className={classes.mainBox}
+      style={{
+        backgroundImage: `url(${carouselItems[2].url})`
+      }}
+    >
+      <Box
+        pt={4}
+        className={classes.descriptionBox}
+      >
+        <Typography
+          variant="h1"
         >
-          <Box
-            height='50vh'
-          >
-            <Typography
-              variant="h4"
-              style={{
-                fontSize: '2rem'
-              }}
-            >
               Визуализатор бренда
-            </Typography>
-            <Divider
-              style={{
-                backgroundColor: 'white'
-              }}
-            />
-            <Typography
-              variant="h4"
-            >
-              Контент менеджер
-            </Typography>
-          </Box>
-        </Box>
-        : <Box
-          p={4}
-          className={classes.box}
-          style={{
-            background: `left bottom / 40% no-repeat url(${carouselItems[2].url})`
-          }}
+        </Typography>
+        <Divider
+          className={classes.divider}
+        />
+        <Typography
+          variant="h1"
         >
-          <Grid
-            container
-            className={classes.grid}
-          >
-            <Grid
-              item
-              sm={5}
-              md={7}
-              lg={8}
-            >
-              <Typography
-                variant="h1"
-                style={{
-                  fontSize: '5.6rem'
-                }}
-              >
-                Визуализатор бренда
-              </Typography>
-              <Divider
-                style={{
-                  backgroundColor: 'white'
-                }}
-              />
-              <Typography
-                variant="h1"
-              >
-                Контент менеджер
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-      }
-    </Layout>
+              Контент менеджер
+        </Typography>
+      </Box>
+    </Box>
   )
 }
 

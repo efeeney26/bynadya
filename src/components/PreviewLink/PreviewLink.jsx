@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Preview = () => {
+const PreviewLink = () => {
   const classes = useStyles()
 
   return (
@@ -22,4 +22,4 @@ const Preview = () => {
   )
 }
 
-export default Preview
+export default PreviewLink

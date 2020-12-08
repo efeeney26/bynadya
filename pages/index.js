@@ -7,7 +7,7 @@ import { client } from '../prismic-configuration'
 
 import { getGroupedData } from '../src/utils'
 import { NavBar, Intro, About, Cases, Services } from '../src/sections'
-import { ScrollToTopButton, Preview, Background } from '../src/components'
+import { ScrollToTopButton, PreviewLink, Background } from '../src/components'
 import { navBar } from '../src/scheme'
 
 export const getStaticProps = async (context) => {
@@ -53,7 +53,7 @@ export default function Home ({ preview, introSection, aboutSection, services, c
         <Services services={services.results}/>
       </Element>
       <ScrollToTopButton/>
-      {preview && <Preview/>}
+      {preview && <PreviewLink/>}
     </>
   )
 }
