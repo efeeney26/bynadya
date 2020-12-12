@@ -11,10 +11,12 @@ import { ScrollToTopButton, PreviewLink, Background } from '../src/components'
 import { navBar } from '../src/scheme'
 
 export const getStaticProps = async (context) => {
-  const introSection = await client.getSingle('intro_section', { ref: context?.previewData?.ref })
-  const aboutSection = await client.getSingle('about', { ref: context?.previewData?.ref })
-  const services = await client.query(Prismic.Predicates.at('document.type', 'service'), { ref: context?.previewData?.ref })
-  const cases = await client.query(Prismic.Predicates.at('document.type', 'case'), { ref: context?.previewData?.ref })
+  const [introSection, aboutSection, services, cases] = await Promise.all([
+    client.getSingle('intro_section', { ref: context?.previewData?.ref }),
+    client.getSingle('about', { ref: context?.previewData?.ref }),
+    client.query(Prismic.Predicates.at('document.type', 'service'), { ref: context?.previewData?.ref }),
+    client.query(Prismic.Predicates.at('document.type', 'case'), { ref: context?.previewData?.ref })
+  ])
 
   return {
     props: {
