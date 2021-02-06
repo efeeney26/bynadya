@@ -1,29 +1,25 @@
 import PropTypes from 'prop-types'
-import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
+import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
-    mainBox: {
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        backgroundPosition: 'bottom',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '80%',
-        [theme.breakpoints.up('md')]: {
-            backgroundPosition: 'left bottom',
-            backgroundSize: '40%',
-            alignItems: 'center',
-            justifyContent: 'flex-end'
-        }
+    gridContainer: {
+        height: 'calc(100vh - 48px)'
     },
-    descriptionBox: {
-        height: '50vh'
+    gridItemImg: {
+        display: 'flex',
+        justifyItems: 'flex-end'
+    },
+    gridItemTypography: {
+        display: 'flex',
+        flexFlow: 'column wrap',
+        justifyContent: 'center',
+        textAlign: 'center'
+    },
+    img: {
+        objectFit: 'contain'
     },
     divider: {
         backgroundColor: 'white',
@@ -35,32 +31,46 @@ const Intro = ({ title, carouselItems }) => {
     const classes = useStyles()
 
     return (
-        <Box
-            p={4}
-            className={classes.mainBox}
-            style={{
-                backgroundImage: `url(${carouselItems[2].url})`
-            }}
-    >
-            <Box
-                pt={4}
-                className={classes.descriptionBox}
-      >
-                <Typography
-                    variant="h1"
+        <Grid
+            container
+            alignItems="stretch"
+            className={classes.gridContainer}
         >
+            <Grid
+                item
+                xs={12}
+                sm={6}
+                className={classes.gridItemImg}
+            >
+                <img
+                    src={carouselItems[2].url}
+                    alt="main"
+                    className={classes.img}
+                    width="100%"
+                    height="100%"
+                />
+            </Grid>
+            <Grid
+                item
+                xs={12}
+                sm={6}
+                className={classes.gridItemTypography}
+            >
+                <Typography
+                    variant="h2"
+                >
                     Визуализатор бренда
                 </Typography>
                 <Divider
                     className={classes.divider}
-        />
+                />
                 <Typography
-                    variant="h1"
-        >
+                    variant="h2"
+                >
                     Контент менеджер
                 </Typography>
-            </Box>
-        </Box>
+            </Grid>
+        </Grid>
     )
 }
 

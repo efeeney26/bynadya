@@ -6,7 +6,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 const useStyles = makeStyles((theme) => ({
     root: {
         position: 'fixed',
-        zIndex: theme.zIndex.background
+        zIndex: theme.zIndex.background,
+        margin: theme.spacing(0, -2)
     }
 }))
 
@@ -17,12 +18,11 @@ const Background = () => {
     return (
         <Box
             className={classes.root}
-    >
+        >
             <Particles
                 style={{
                     background: '#000000',
-                    minHeight: '100vh',
-                    minWidth: '100vw'
+                    minHeight: '100vh'
                 }}
                 params={{
                     particles: {
@@ -54,7 +54,7 @@ const Background = () => {
                     },
                     retina_detect: true
                 }}
-      />
+            />
         </Box>
     )
 }

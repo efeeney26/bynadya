@@ -19,11 +19,14 @@ const NavBar = ({ barItems }) => {
 
     return (
         <AppBar
-            position="absolute"
+            position="static"
             color="transparent"
             elevation={0}
     >
-            <Toolbar>
+            <Toolbar
+                variant="dense"
+                disableGutters
+            >
                 <Typography variant="h6" className={classes.title} color='textPrimary'>
                     ByNadya
                 </Typography>

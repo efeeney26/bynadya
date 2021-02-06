@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 import Prismic from 'prismic-javascript'
 import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core'
 
 import { client } from '../prismic-configuration'
 
@@ -30,20 +31,28 @@ export const getStaticProps = async (context) => {
     }
 }
 
+const useStyles = makeStyles((theme) => ({
+    container: {
+        padding: theme.spacing(0, 2)
+    }
+}))
+
 export default function Home ({ preview, introSection, aboutSection, services, cases }) {
     const carouselItems = useMemo(() => getGroupedData(introSection?.data?.carousel), [introSection.data.carousel])
+    const classes = useStyles()
 
     return (
         <Container
             maxWidth={false}
             disableGutters
+            className={classes.container}
     >
             <Background />
             <NavBar barItems={navBar}/>
             <Intro
                 title={introSection.data.title}
                 carouselItems={carouselItems}
-      />
+            />
             <Element name="About">
                 <About
                     title={aboutSection.data.title}

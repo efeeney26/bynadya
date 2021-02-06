@@ -22,6 +22,20 @@ const primaryTheme = createMuiTheme({
     },
     zIndex: {
         background: -1
+    },
+    overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                html: {
+                    height: 'auto'
+                },
+                body: {
+                    minHeight: '100%',
+                    'overflow-x': 'hidden',
+                    'overflow-y': 'overlay'
+                }
+            }
+        }
     }
 })
 
