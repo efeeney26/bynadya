@@ -19,6 +19,9 @@ const primaryTheme = createMuiTheme({
             },
             fontSize: '5.6rem'
         }
+    },
+    zIndex: {
+        background: -1
     }
 })
 

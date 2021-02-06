@@ -3,10 +3,10 @@ import Particles from 'react-particles-js'
 import { makeStyles } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         position: 'fixed',
-        zIndex: '-1'
+        zIndex: theme.zIndex.background
     }
 }))
 
