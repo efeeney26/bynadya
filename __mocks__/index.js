@@ -4,8 +4,8 @@ import servicesMock from './services'
 import casesMock from './cases'
 
 export {
-  introSectionMock,
-  aboutSectionMock,
-  servicesMock,
-  casesMock
+    introSectionMock,
+    aboutSectionMock,
+    servicesMock,
+    casesMock
 }

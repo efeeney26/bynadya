@@ -18,134 +18,134 @@ import { makeStyles } from '@material-ui/core/styles'
 import { RichText } from 'prismic-reactjs'
 
 const useStyles = makeStyles((theme) => ({
-  card: {
-    transition: '0.3s',
-    boxShadow: '0 3px 15px -5px white',
-    '&:hover': {
-      boxShadow: '0 16px 70px -12.125px white'
+    card: {
+        transition: '0.3s',
+        boxShadow: '0 3px 15px -5px white',
+        '&:hover': {
+            boxShadow: '0 16px 70px -12.125px white'
+        }
+    },
+    media: {
+        height: 0,
+        paddingTop: '56.25%' // 16:9
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest
+        })
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)'
+    },
+    listAvatar: {
+        backgroundColor: theme.palette.primary
+    },
+    cardFullDescription: {
+        paddingTop: 0,
+        paddingLeft: 0,
+        paddingRight: 0
+    },
+    cardAction: {
+        padding: 0
     }
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%' // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)'
-  },
-  listAvatar: {
-    backgroundColor: theme.palette.primary
-  },
-  cardFullDescription: {
-    paddingTop: 0,
-    paddingLeft: 0,
-    paddingRight: 0
-  },
-  cardAction: {
-    padding: 0
-  }
 }))
 
 const ServiceCard = ({ service }) => {
-  const classes = useStyles()
-  const [isCardExpanded, setCardExpand] = useState(false)
+    const classes = useStyles()
+    const [isCardExpanded, setCardExpand] = useState(false)
 
-  const handleExpandClick = useCallback(() => {
-    setCardExpand(!isCardExpanded)
-  }, [isCardExpanded, setCardExpand])
+    const handleExpandClick = useCallback(() => {
+        setCardExpand(!isCardExpanded)
+    }, [isCardExpanded, setCardExpand])
 
-  return (
-    <Card
-      className={classes.card}
+    return (
+        <Card
+            className={classes.card}
     >
-      <CardMedia
-        className={classes.media}
-        image={service.image.url}
-        title={service.image.alt}
+            <CardMedia
+                className={classes.media}
+                image={service.image.url}
+                title={service.image.alt}
       />
-      <CardContent>
-        {service?.title.length &&
-          <Typography
-            color="textSecondary"
-            variant="h6"
-            gutterBottom
+            <CardContent>
+                {service?.title.length &&
+                <Typography
+                    color="textSecondary"
+                    variant="h6"
+                    gutterBottom
           >
-            {RichText.asText(service.title)}
-          </Typography>
-        }
-        {service?.subheader?.length &&
-          <Typography
-            variant="body1"
-            color="textSecondary"
-            gutterBottom
-          >
-            {RichText.asText(service.subheader)}
-          </Typography>
-        }
-        {service?.description?.length &&
-          <Typography variant="body2" color="textSecondary" component="p">
-            {RichText.asText(service.description)}
-          </Typography>
-        }
-      </CardContent>
-      {service?.fulldescriptionblock?.length
-        ? <>
-          <CardActions
-            disableSpacing
-            classes={{ root: classes.cardAction }}
-          >
-            <IconButton
-              className={cs(classes.expand, {
-                [classes.expandOpen]: isCardExpanded
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={isCardExpanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon/>
-            </IconButton>
-          </CardActions>
-          <Collapse in={isCardExpanded} timeout="auto">
-            <CardContent
-              classes={{ root: classes.cardFullDescription }}
-            >
-              {service?.fulldescriptionsubheader?.length &&
-                <Typography variant="h6" align="center" color="textSecondary">
-                  {RichText.asText(service.fulldescriptionsubheader)}
+                    {RichText.asText(service.title)}
                 </Typography>
-              }
-              <List>
-                {service.fulldescriptionblock.map(descriptionItem => (
-                  <ListItem
-                    key={RichText.asText(descriptionItem.fulldescription)}
-                  >
-                    <ListItemAvatar>
-                      <RemoveOutlinedIcon color="disabled"/>
-                    </ListItemAvatar>
-                    <ListItemText secondary={RichText.asText(descriptionItem.fulldescription)}/>
-                  </ListItem>
-                ))}
-              </List>
+        }
+                {service?.subheader?.length &&
+                <Typography
+                    variant="body1"
+                    color="textSecondary"
+                    gutterBottom
+          >
+                    {RichText.asText(service.subheader)}
+                </Typography>
+        }
+                {service?.description?.length &&
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {RichText.asText(service.description)}
+                </Typography>
+        }
             </CardContent>
-          </Collapse>
-        </>
-        : null
+            {service?.fulldescriptionblock?.length
+                ? <>
+                    <CardActions
+                        disableSpacing
+                        classes={{ root: classes.cardAction }}
+          >
+                        <IconButton
+                            className={cs(classes.expand, {
+                                [classes.expandOpen]: isCardExpanded
+                            })}
+                            onClick={handleExpandClick}
+                            aria-expanded={isCardExpanded}
+                            aria-label="show more"
+            >
+                            <ExpandMoreIcon/>
+                        </IconButton>
+                    </CardActions>
+                    <Collapse in={isCardExpanded} timeout="auto">
+                        <CardContent
+                            classes={{ root: classes.cardFullDescription }}
+            >
+                            {service?.fulldescriptionsubheader?.length &&
+                            <Typography variant="h6" align="center" color="textSecondary">
+                                {RichText.asText(service.fulldescriptionsubheader)}
+                            </Typography>
+              }
+                            <List>
+                                {service.fulldescriptionblock.map(descriptionItem => (
+                                    <ListItem
+                                        key={RichText.asText(descriptionItem.fulldescription)}
+                  >
+                                        <ListItemAvatar>
+                                          <RemoveOutlinedIcon color="disabled"/>
+                                      </ListItemAvatar>
+                                        <ListItemText secondary={RichText.asText(descriptionItem.fulldescription)}/>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </CardContent>
+                    </Collapse>
+                </>
+                : null
       }
-    </Card>
-  )
+        </Card>
+    )
 }
 
 ServiceCard.propTypes = {
-  service: PropTypes.object
+    service: PropTypes.object
 }
 
 ServiceCard.defaultProps = {
-  service: {}
+    service: {}
 }
 
 export default ServiceCard

@@ -8,44 +8,44 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Menu } from '../../components'
 
 const useStyles = makeStyles(() => ({
-  title: {
-    flexGrow: 1
-  }
+    title: {
+        flexGrow: 1
+    }
 }))
 
 const NavBar = ({ barItems }) => {
-  const classes = useStyles()
-  const matches = useMediaQuery('(max-width:700px)')
+    const classes = useStyles()
+    const matches = useMediaQuery('(max-width:700px)')
 
-  return (
-    <AppBar
-      position="absolute"
-      color="transparent"
-      elevation={0}
+    return (
+        <AppBar
+            position="absolute"
+            color="transparent"
+            elevation={0}
     >
-      <Toolbar>
-        <Typography variant="h6" className={classes.title} color='textPrimary'>
-            ByNadya
-        </Typography>
-        <Menu
-          items={barItems}
-          mobileView={matches}
+            <Toolbar>
+                <Typography variant="h6" className={classes.title} color='textPrimary'>
+                    ByNadya
+                </Typography>
+                <Menu
+                    items={barItems}
+                    mobileView={matches}
         />
-      </Toolbar>
-    </AppBar>
-  )
+            </Toolbar>
+        </AppBar>
+    )
 }
 
 NavBar.propTypes = {
-  barItems: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    duration: PropTypes.number
-  }))
+    barItems: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        title: PropTypes.string,
+        duration: PropTypes.number
+    }))
 }
 
 NavBar.defaultProps = {
-  barItems: []
+    barItems: []
 }
 
 export default NavBar

@@ -11,6 +11,6 @@ export const accessToken = process.env.PRISMIC_TOKEN
 
 // Client method to query Prismic
 export const client = Prismic.client(apiEndpoint, {
-  accessToken,
-  proxyAgent: new https.Agent({ maxSockets: 100 })
+    accessToken,
+    proxyAgent: new https.Agent({ maxSockets: 100 })
 })

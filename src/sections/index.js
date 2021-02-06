@@ -5,9 +5,9 @@ import Cases from './Cases/Cases'
 import Services from './Services/Services'
 
 export {
-  NavBar,
-  Intro,
-  About,
-  Cases,
-  Services
+    NavBar,
+    Intro,
+    About,
+    Cases,
+    Services
 }

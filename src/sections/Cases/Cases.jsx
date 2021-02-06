@@ -10,67 +10,67 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { RichText } from 'prismic-reactjs'
 
 const useStyles = makeStyles((theme) => {
-  return {
-    button: {
-      margin: theme.spacing(1),
-      [theme.breakpoints.down('xs')]: {
-        fontSize: 8
-      }
+    return {
+        button: {
+            margin: theme.spacing(1),
+            [theme.breakpoints.down('xs')]: {
+                fontSize: 8
+            }
+        }
     }
-  }
 })
 
 const Cases = ({ cases }) => {
-  const classes = useStyles()
-  const matches = useMediaQuery('(max-width:700px)')
+    const classes = useStyles()
+    const matches = useMediaQuery('(max-width:700px)')
 
-  return (
-    <Box p={2}>
-      <GridList
-        cols={matches ? 2 : 3}
-        spacing={24}
+    return (
+        <Box p={2}>
+            <GridList
+                cols={matches ? 2 : 3}
+                spacing={24}
       >
-        {cases.map(({ data, uid }) => (
-          <GridListTile
-            key={uid}
-            rows={matches ? 2 : 2.7}
+                {cases.map(({ data, uid }) => (
+                    <GridListTile
+                        key={uid}
+                        rows={matches ? 2 : 2.7}
           >
-            <img
-              src={data.image.url}
-              alt={data.image.alt}
+                        <img
+                            src={data.image.url}
+                            alt={data.image.alt}
             />
-            <GridListTileBar
-              title={RichText.asText(data.title)}
-              subtitle={<span>{data.date}</span>}
-              actionIcon={
-                <Link
-                  href="cases/[uid]"
-                  as={`/cases/${uid}`}
+                        <GridListTileBar
+                            title={RichText.asText(data.title)}
+                            subtitle={<span>{data.date}</span>}
+                            actionIcon={
+                                <Link
+                                    href="cases/[uid]"
+                                    as={`/cases/${uid}`}
                 >
-                  <Button
-                    variant="contained"
-                    size="small"
-                    color="default"
-                    className={classes.button}
+                                    <Button
+                                        variant="contained"
+                                        size="small"
+                                        color="default"
+                                        className={classes.button}
                   >
-                    Show Case
+                                        Show Case
                   </Button>
-                </Link>
+                                </Link>
               }
             />
-          </GridListTile>
-        ))}
-      </GridList>
-    </Box>
-  )
+                    </GridListTile>
+                ))}
+            </GridList>
+        </Box>
+    )
 }
 
 Cases.propTypes = {
-  cases: PropTypes.arrayOf(PropTypes.object)
+    cases: PropTypes.arrayOf(PropTypes.object)
 }
 
 Cases.defaultProps = {
-  cases: []
+    cases: []
 }
 
 export default Cases

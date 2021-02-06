@@ -2,21 +2,21 @@ import PropTypes from 'prop-types'
 import Container from '@material-ui/core/Container'
 
 const Layout = ({ children }) => (
-  <Container
-    component="section"
-    maxWidth={false}
-    disableGutters
+    <Container
+        component="section"
+        maxWidth={false}
+        disableGutters
   >
-    {children}
-  </Container>
+        {children}
+    </Container>
 )
 
 Layout.propTypes = {
-  children: PropTypes.node
+    children: PropTypes.node
 }
 
 Layout.defaultProps = {
-  children: null
+    children: null
 }
 
 export default Layout

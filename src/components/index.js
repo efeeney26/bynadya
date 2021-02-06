@@ -7,11 +7,11 @@ import ServiceCard from './ServiceCard/ServiceCard'
 import Background from './Background/Background'
 
 export {
-  Layout,
-  ScrollToTopButton,
-  Carousel,
-  Menu,
-  PreviewLink,
-  ServiceCard,
-  Background
+    Layout,
+    ScrollToTopButton,
+    Carousel,
+    Menu,
+    PreviewLink,
+    ServiceCard,
+    Background
 }
