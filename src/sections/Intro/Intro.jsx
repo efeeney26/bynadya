@@ -6,16 +6,21 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
     gridContainer: {
-        height: 'calc(100vh - 48px)'
+        height: 'calc(100vh - 48px)',
+        [theme.breakpoints.down('xs')]: {
+            flexFlow: 'column-reverse nowrap'
+        }
     },
     gridItemImg: {
         display: 'flex',
-        justifyItems: 'flex-end'
+        alignItems: 'flex-end',
+        justifyContent: 'center'
     },
     gridItemTypography: {
         display: 'flex',
         flexFlow: 'column wrap',
         justifyContent: 'center',
+        alignContent: 'center',
         textAlign: 'center'
     },
     img: {
@@ -33,7 +38,6 @@ const Intro = ({ title, carouselItems }) => {
     return (
         <Grid
             container
-            alignItems="stretch"
             className={classes.gridContainer}
         >
             <Grid
@@ -47,7 +51,7 @@ const Intro = ({ title, carouselItems }) => {
                     alt="main"
                     className={classes.img}
                     width="100%"
-                    height="100%"
+                    height="80%"
                 />
             </Grid>
             <Grid
